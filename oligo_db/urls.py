@@ -20,5 +20,6 @@ urlpatterns = [
     url(r'^avatar/', include('avatar.urls')),
     url(r'^polls/', include('polls.urls')),
     url(r'^admin/', admin.site.urls),
-    url(r'^query/', include('query.urls'))
+    url(r'^query/', include('query.urls')),
+    url(r'^oligo/', include('match_oligo.urls'))
 ]

@@ -1,0 +1,10 @@
+{% extends "query/avatar_test.html" %}
+{% block content %}
+{% load crispy_forms_tags %}
+<p>Hello! Drag and drop or upload your oligo and reference files below. </p>
+    <h1>Upload oligo files. Only accepting xls and xlsx.</h1>
+    <form method="POST" class="uniForm">{% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+{% endblock %}
