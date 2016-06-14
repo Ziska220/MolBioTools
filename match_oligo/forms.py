@@ -7,7 +7,7 @@ class UploadFileForm(forms.Form):
 
 from .models import user_input
 
-class RefForm(forms.Form):
+class RefForm(forms.ModelForm):
     class Meta:
 	model = user_input
 	fields = ('reference',)

@@ -3,9 +3,10 @@
 {% load crispy_forms_tags %}
 <p>Hello! Drag and drop or upload your oligo and reference files below. </p>
     <h1>Upload oligo files. Only accepting xls and xlsx.</h1>
-    <form  enctype="multipart/form-data" method="POST">
+    <form class="uniForm" enctype="multipart/form-data" method="POST">
         {% csrf_token %}	
-        {{ form.as_p }}
+        {{ form1.as_p }}
+    	{{ form2.as_p}}
         <button type="submit" class="save btn btn-default">Save</button>
     </form>
 {% endblock %}
