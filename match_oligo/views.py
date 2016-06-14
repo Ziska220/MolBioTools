@@ -1,23 +1,18 @@
 from django.shortcuts import render, redirect
-from django import forms
+import django_excel as excel
 
-from .forms import XlsInputForm
+from .forms import UploadFileForm
 
-
-# Create your views here.
-
-def excel_input(request):
-    if request.method == 'POST':
-        form = XlsInputForm(request.POST, request.FILES)
-
+def import_excel_view(request):
+    if request.method == "POST":
+        form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
-            input_excel = request.FILES['input_excel']
-            book = xlrd.open_workbook(file_contents=input_excel.read())
-
-    # your work with workbook 'book'
-
+            filehandle = request.FILES['file']
+	    return render(request, 'match_oligo/test1.html', {'form': form})
+	else:    
+	    return render(request, 'match_oligo/test2.html' , {'form': form})
+		
     else:
-        form = XlsInputForm
+	form = UploadFileForm()
 
-    return render (request, 'match_oligo/excel_input.html', {'form': form})
-
+    return render(request, 'match_oligo/excel_input.html' , {'form': form})

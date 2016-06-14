@@ -1,14 +1,14 @@
 
 from django import forms
 
-IMPORT_FILE_TYPES = ['.xls', '.xlsx', ]
-class XlsInputForm(forms.Form):
-    input_excel = forms.FileField(required= True, label= u"Upload the Excel file to import to the system.")
+class UploadFileForm(forms.Form):
+    title = forms.CharField(max_length=50)
+    file = forms.FileField()
 
-    def clean_input_excel(self):
-        input_excel = self.cleaned_data['input_excel']
-        extension = os.path.splitext( input_excel.name )[1]
-        if not (extension in IMPORT_FILE_TYPES):
-            raise forms.ValidationError( u'%s is not a valid excel file. Please make sure your input file is an excel file (Excel 2007 is NOT supported.' % extension )
-        else:
-            return input_excel
+from .models import user_input
+
+class RefForm(forms.Form):
+    class Meta:
+	model = user_input
+	fields = ('reference',)
+    	
