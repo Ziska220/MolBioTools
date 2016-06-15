@@ -21,5 +21,5 @@ urlpatterns = [
     url(r'^polls/', include('polls.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^query/', include('query.urls')),
-    url(r'^oligo/', include('match_oligo.urls'))
+    url(r'^oligo/', include('match_oligo.urls', namespace='oligo'))
 ]
