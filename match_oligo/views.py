@@ -22,27 +22,32 @@ def import_excel_view(request):
 	    book = xlrd.open_workbook(file_contents=oligo_input.read())
 	    sheet = book.sheet_by_index(0)
 	    nrows = sheet.nrows
-	    test_cell = sheet.cell_value(rowx=1, colx=1)
 	    sheet_name = sheet.name
 	    sheet_nrows = sheet.nrows	    
 	 
-	    oligo_row = 0
+	    oligo_row = 1
 	    oligo_col = 2
 	    name_col = 1
 
+	    oligo_row_out = oligo_row
 	    while oligo_row < nrows:
+		oligo_row_start = oligo_row
 		oligo = sheet.cell_value(rowx=oligo_row, colx=oligo_col)
 		oligo_caps = oligo.upper()
 		oligo_find = ref_seq.find(oligo_caps)	
 		oligo_rev_find = ref_rev_comp.find(oligo_caps)
 		if oligo_find == -1 and oligo_rev_find == -1:
+		    oligo_now = oligo_caps
+		    oligo_row_now = oligo_row
 		    oligo_row += 1
 		elif oligo_find ==0 or oligo_rev_find == 0:
-		    name = sheet.cell_value(rowx=oligo_row, colx=name_col)
-		    match = oligo_caps
+		    print "pass elif"
+		    print oligo_caps
+		    oligo_now_elif = oligo_caps
+		    name_test = sheet.cell_value(rowx=oligo_row, colx=name_col)
 		    break
 	    
-	    return render(request, 'match_oligo/test_excel_var.html', {'var': [test_cell, sheet_name, match, ref_seq] })
+	    return render(request, 'match_oligo/test_excel_var.html', {'var': [oligo_row_out, oligo_row_start, nrows, oligo_row_now, sheet_name, ref_seq, oligo_now, oligo_now_elif, name_test] })
 	else:    
 	    return render(request, 'match_oligo/test2.html' , {'form2': form2})
 		
