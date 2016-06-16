@@ -5,8 +5,8 @@
     <h1>Upload oligo files. Only accepting xls and xlsx.</h1>
     <form class="uniForm" enctype="multipart/form-data" method="POST">
         {% csrf_token %}	
-        {{ form1.as_p }}
-    	{{ form2.as_p}}
+        {{ form1|crispy }}
+    	{{ form2|crispy}}
         <button type="submit" class="save btn btn-default">Save</button>
     </form>
 {% endblock %}

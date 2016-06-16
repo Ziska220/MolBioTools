@@ -65,7 +65,7 @@ def import_excel_view(request):
 	form1 = UploadFileForm()
 	form2 = RefForm()
     
-    return render(request, 'match_oligo/excel_input.html', {'form1': form1, 'form2': form2})
+    return render(request, 'match_oligo/user_input.html', {'form1': form1, 'form2': form2})
 
 
 
