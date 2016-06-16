@@ -16,7 +16,8 @@ def import_excel_view(request):
 	    #SUBMITTED DATA: REFERENCE TEXT
 	    reference = request.POST['reference']
 	    #accesses user submitted reference data as dictionary by keyname
-	    ref_seq = Seq(reference)
+	    ref_to_seq = Seq(reference)
+	    ref_seq = ref_to_seq.upper()
 	    #uses biopython bio.seq package to create sequence from the submitted data: reference string
 	    ref_rev_comp = Seq.reverse_complement(ref_seq)
 	    #uses biopython bio.seq package to create a reverse compliment of the submitted reference data in case oligo is in reverse compliment orientation
@@ -50,12 +51,12 @@ def import_excel_view(request):
 		if oligo_find == -1 and oligo_rev_find == -1:
 		    oligo_row += 1
 		    #if there is no match (-1), go to next row (add +1 to oligo_row)
-		elif oligo_find ==0 or oligo_rev_find == 0:
-		    name_test = sheet.cell_value(rowx=oligo_row, colx=name_col)
+		elif oligo_find == 0 or oligo_rev_find == 0:
+		    name_match = sheet.cell_value(rowx=oligo_row, colx=name_col)
 		    #if there is a match (0), set handle to that cell name
 		    break
 	    
-	    return render(request, 'match_oligo/test_excel_var.html', {'var': [name_test] })
+	    return render(request, 'match_oligo/test_excel_var.html', {'var': [name_match] })
 	    #ADD WHAT TO DO WHEN DO NOT FIND A MATCH
 	else:    
 	    return render(request, 'match_oligo/test2.html' , {'form2': form2})
