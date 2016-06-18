@@ -56,7 +56,7 @@ def import_excel_view(request):
 		    #if there is a match (0), set handle to that cell name
 		    break
 	    
-	    return render(request, 'match_oligo/test_excel_var.html', {'var': [name_match] })
+	    return render(request, 'match_oligo/output.html', {'var': [name_match] })
 	    #ADD WHAT TO DO WHEN DO NOT FIND A MATCH
 	else:    
 	    return render(request, 'match_oligo/test2.html' , {'form2': form2})
@@ -67,7 +67,3 @@ def import_excel_view(request):
 	form2 = RefForm()
     
     return render(request, 'match_oligo/user_input.html', {'form1': form1, 'form2': form2})
-
-
-
-
