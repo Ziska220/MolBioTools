@@ -23,15 +23,20 @@ def import_excel_view(request):
 	    #uses biopython bio.seq package to create a reverse compliment of the submitted reference data in case oligo is in reverse compliment orientation
 
 	    #SUBMITTED DATA: OLIGO FILE
-            oligo_input = request.FILES['file']
+            #oligo_input = request.FILES['file']
+	    
+	    oligo_input =  request.FILES.getlist('file')
+	    print oligo_input
+	    print type(oligo_input)	    
+
 	    #accesses user submitted data from uploaded file
-	    book = xlrd.open_workbook(file_contents=oligo_input.read())
+#	    book = xlrd.open_workbook(file_contents=oligo_input.read())
 	    #uses xlrd package to open and read submitted file as excel sheet
-	    sheet = book.sheet_by_index(0)
+#	    sheet = book.sheet_by_index(0)
 	    #identifies which sheet in the excel file to use
-	    nrows = sheet.nrows
+#	    nrows = sheet.nrows
 	    #sets handle to number of rows in identified excel sheet
-	    sheet_name = sheet.name
+#	    sheet_name = sheet.name
 	    #sets handle to sheet name in identified excel sheet
 	
 	    #OLIGO MATCH SCRIPT: add +1 to oligo_row until reach nrows (the total number of rows in the sheet) or until find match for oligo in reference 
@@ -39,7 +44,18 @@ def import_excel_view(request):
 	    oligo_col = 2
 	    name_col = 1
 	    #sets variables to identify row and column. 
-	
+
+	    for xlsfile in oligo_input:
+		print type(oligo_input)
+		print xlsfile
+		book = xlrd.open_workbook(file_contents=xlsfile.read())
+		sheet = book.sheet_by_index(0)
+    		nrows = sheet.nrows
+		
+		print nrows
+
+	   # book = xlrd.open_workbook(oligo_input)
+	   # print book
 	    while oligo_row < nrows:
 		oligo = sheet.cell_value(rowx=oligo_row, colx=oligo_col)
 		#using above variables, sets handle to cell in sheet where match search will begin
@@ -67,3 +83,4 @@ def import_excel_view(request):
 	form2 = RefForm()
     
     return render(request, 'match_oligo/user_input.html', {'form1': form1, 'form2': form2})
+
