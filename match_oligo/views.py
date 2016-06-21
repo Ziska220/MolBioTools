@@ -28,6 +28,8 @@ def import_excel_view(request):
             oligo_input =  request.FILES.getlist('file')
             print oligo_input
             print type(oligo_input)         
+	    name_match = ''
+           # name_match_list = []
 
             #accesses user submitted data from uploaded file
 #           book = xlrd.open_workbook(file_contents=oligo_input.read())
@@ -39,25 +41,27 @@ def import_excel_view(request):
 #           sheet_name = sheet.name
             #sets handle to sheet name in identified excel sheet
         
-            #OLIGO MATCH SCRIPT: add +1 to oligo_row until reach nrows (the total number of rows in the sheet) or until find match for oligo in reference 
-            oligo_row = 1
-            oligo_col = 2
-            name_col = 1
-            #sets variables to identify row and column. 
-
             for xlsfile in oligo_input:
+                print 'enter for'
+                #OLIGO MATCH SCRIPT: add +1 to oligo_row until reach nrows (the total number of rows in the sh
+                oligo_row = 1
+                oligo_col = 2
+                name_col = 1
+                #sets variables to identify row and column.
                 print type(oligo_input)
                 print xlsfile
                 book = xlrd.open_workbook(file_contents=xlsfile.read())
                 #Creates string from 'ExcelInMemoryUploadedFile' with read() function
                 sheet = book.sheet_by_index(0)
                 nrows = sheet.nrows
-                
+                print oligo_row                
                 print nrows
 
-                while oligo_row < nrows:
+                if oligo_row < nrows:
+                    print 'enter if'
                     oligo = sheet.cell_value(rowx=oligo_row, colx=oligo_col)
                     #using above variables, sets handle to cell in sheet where match search will begin
+                    print oligo
                     oligo_caps = oligo.upper()
                     #uses biopython to ensure oligo from cell is all caps
                     oligo_find = ref_seq.find(oligo_caps)       
@@ -67,9 +71,12 @@ def import_excel_view(request):
                         oligo_row += 1
                         #if there is no match (-1), go to next row (add +1 to oligo_row)
                     elif oligo_find == 0 or oligo_rev_find == 0:
+                        print 'enter elif'
                         name_match = sheet.cell_value(rowx=oligo_row, colx=name_col)
+                        name_match_list.extend((name_match,))
                         #if there is a match (0), set handle to that cell name
-                        break
+                      
+              
             
             return render(request, 'match_oligo/output.html', {'var': [name_match] })
             #ADD WHAT TO DO WHEN DO NOT FIND A MATCH
