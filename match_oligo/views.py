@@ -68,11 +68,13 @@ def import_excel_view(request):
                     oligo_rev_find = ref_rev_comp.find(oligo_caps)
                     #uses biopython to look for oligo in reference and reverse compliment of reference
                     if oligo_find == -1 and oligo_rev_find == -1:
+                        print "enter if2"
                         oligo_row += 1
                         #if there is no match (-1), go to next row (add +1 to oligo_row)
                     elif oligo_find == 0 or oligo_rev_find == 0:
                         print 'enter elif'
                         name_match = sheet.cell_value(rowx=oligo_row, colx=name_col)
+                        print name_match
                         name_match_list.extend((name_match,))
                         #if there is a match (0), set handle to that cell name
                       
