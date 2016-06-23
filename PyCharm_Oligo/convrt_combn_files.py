@@ -50,18 +50,11 @@ for xlsfile in f:
 
     for oligo in range(sheet.nrows):
         cell = sheet.cell_value(rowx=oligo_row, colx=oligo_col)
-        print (cell)
-        print (xlsfile)
         if oligo_row < nrows:
-            print ("if1")
-            print (oligo_row)
             oligo_caps = cell.upper()
             oligo_find = ref_seq.find(oligo_caps)
             oligo_rev_find = ref_rev_comp.find(oligo_caps)
-            print (oligo_find)
-            print (oligo_caps)
-            if oligo_find == -1 and oligo_rev_find == -1:
-                print ("if2")
+            if oligo_find == -1 and oligo_rev_find == -1 or cell == '':
                 oligo_row += 1
             elif oligo_find != -1 or oligo_rev_find != -1:
                 print ('elif1')

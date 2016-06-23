@@ -29,7 +29,7 @@ def import_excel_view(request):
             print oligo_input
             print type(oligo_input)         
 	    name_match = ''
-           # name_match_list = []
+#            name_match_list = []
 
             #accesses user submitted data from uploaded file
 #           book = xlrd.open_workbook(file_contents=oligo_input.read())
@@ -56,27 +56,32 @@ def import_excel_view(request):
                 nrows = sheet.nrows
                 print oligo_row                
                 print nrows
+                
+                for oligo in range(sheet.nrows):
+                    cell = sheet.cell_value(rowx=oligo_row, colx=oligo_col)
+                    print cell
 
-                if oligo_row < nrows:
-                    print 'enter if'
-                    oligo = sheet.cell_value(rowx=oligo_row, colx=oligo_col)
-                    #using above variables, sets handle to cell in sheet where match search will begin
-                    print oligo
-                    oligo_caps = oligo.upper()
-                    #uses biopython to ensure oligo from cell is all caps
-                    oligo_find = ref_seq.find(oligo_caps)       
-                    oligo_rev_find = ref_rev_comp.find(oligo_caps)
-                    #uses biopython to look for oligo in reference and reverse compliment of reference
-                    if oligo_find == -1 and oligo_rev_find == -1:
-                        print "enter if2"
-                        oligo_row += 1
-                        #if there is no match (-1), go to next row (add +1 to oligo_row)
-                    elif oligo_find == 0 or oligo_rev_find == 0:
-                        print 'enter elif'
-                        name_match = sheet.cell_value(rowx=oligo_row, colx=name_col)
-                        print name_match
-                        name_match_list.extend((name_match,))
-                        #if there is a match (0), set handle to that cell name
+                    if oligo_row < nrows:
+                        print 'enter if'
+                        print cell
+                        #oligo = sheet.cell_value(rowx=oligo_row, colx=oligo_col)
+                        #using above variables, sets handle to cell in sheet where match search will begin
+                        oligo_caps = cell.upper()
+                        #uses biopython to ensure oligo from cell is all caps
+                        oligo_find = ref_seq.find(oligo_caps)       
+                        oligo_rev_find = ref_rev_comp.find(oligo_caps)
+                        #uses biopython to look for oligo in reference and reverse compliment of reference
+                        if oligo_find == -1 and oligo_rev_find == -1:
+                            print "enter if2"
+                            oligo_row += 1
+                            #if there is no match (-1), go to next row (add +1 to oligo_row)
+                        elif oligo_find != -1 or oligo_rev_find != -1:
+                            print 'enter elif'
+                            oligo_row += 1
+                            name_match = sheet.cell_value(rowx=oligo_row, colx=name_col)
+                            print name_match
+ #                           name_match_list.extend((name_match,))
+                            #if there is a match (0), set handle to that cell name
                       
               
             
