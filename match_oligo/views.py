@@ -29,7 +29,7 @@ def import_excel_view(request):
             print oligo_input
             print type(oligo_input)         
 	    name_match = ''
-#            name_match_list = []
+            name_match_list = []
 
             #accesses user submitted data from uploaded file
 #           book = xlrd.open_workbook(file_contents=oligo_input.read())
@@ -44,7 +44,7 @@ def import_excel_view(request):
             for xlsfile in oligo_input:
                 print 'enter for'
                 #OLIGO MATCH SCRIPT: add +1 to oligo_row until reach nrows (the total number of rows in the sh
-                oligo_row = 1
+                oligo_row = 0
                 oligo_col = 2
                 name_col = 1
                 #sets variables to identify row and column.
@@ -71,7 +71,7 @@ def import_excel_view(request):
                         oligo_find = ref_seq.find(oligo_caps)       
                         oligo_rev_find = ref_rev_comp.find(oligo_caps)
                         #uses biopython to look for oligo in reference and reverse compliment of reference
-                        if oligo_find == -1 and oligo_rev_find == -1:
+                        if oligo_find == -1 and oligo_rev_find == -1 or cell == '':
                             print "enter if2"
                             oligo_row += 1
                             #if there is no match (-1), go to next row (add +1 to oligo_row)
@@ -80,12 +80,12 @@ def import_excel_view(request):
                             oligo_row += 1
                             name_match = sheet.cell_value(rowx=oligo_row, colx=name_col)
                             print name_match
- #                           name_match_list.extend((name_match,))
+                            name_match_list.extend((name_match,))
                             #if there is a match (0), set handle to that cell name
                       
               
             
-            return render(request, 'match_oligo/output.html', {'var': [name_match] })
+            return render(request, 'match_oligo/output.html', {'var': [name_match_list] })
             #ADD WHAT TO DO WHEN DO NOT FIND A MATCH
         else:    
             return render(request, 'match_oligo/test2.html' , {'form2': form2})
