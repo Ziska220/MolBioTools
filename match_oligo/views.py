@@ -46,7 +46,7 @@ def import_excel_view(request):
                 #OLIGO MATCH SCRIPT: add +1 to oligo_row until reach nrows (the total number of rows in the sh
                 oligo_row = 0
                 oligo_col = 2
-                name_col = 1
+                name_col = 0
                 #sets variables to identify row and column.
                 print type(oligo_input)
                 print xlsfile

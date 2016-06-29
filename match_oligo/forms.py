@@ -3,7 +3,7 @@ from django import forms
 
 class UploadFileForm(forms.Form):
     #title = forms.CharField(max_length=50)
-    file = forms.FileField(widget=forms.FileInput(attrs={'multiple': True}))
+    file = forms.FileField(widget=forms.FileInput(attrs={'multiple': True}), label = 'Upload Oligo File(s):')
 
 from .models import user_input
 
