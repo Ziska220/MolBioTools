@@ -11,4 +11,4 @@ class RefForm(forms.ModelForm):
     class Meta:
 	model = user_input
 	fields = ('reference',)
-    	
+        labels = {'reference': ('Enter Reference Sequence:')}	
