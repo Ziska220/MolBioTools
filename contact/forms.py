@@ -3,7 +3,7 @@ from .models import Name
  
 
 class NameForm(forms.ModelForm):
-	class Meta:
-		model = Name
-		fields = ('name_text', 'email', 'comments_text',)
+    class Meta:
+        model = Name
+        fields = ('name_text', 'email', 'comments_text',)
 

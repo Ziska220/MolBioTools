@@ -1,7 +1,6 @@
 {% extends "match_oligo/main.html" %}
 {% block content %}
 {% load crispy_forms_tags %}
-<p>Hello! Drag and drop or upload your oligo and reference files below. </p>
     <h1>Name and Comments</h1>
     <form method="POST" class="uniForm">{% csrf_token %}
         {{ form|crispy }}

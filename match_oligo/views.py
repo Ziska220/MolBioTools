@@ -30,6 +30,7 @@ def import_excel_view(request):
             print type(oligo_input)         
 	    name_match = ''
             name_match_list = []
+            
 
             #accesses user submitted data from uploaded file
 #           book = xlrd.open_workbook(file_contents=oligo_input.read())
@@ -78,8 +79,9 @@ def import_excel_view(request):
                         elif oligo_find != -1 or oligo_rev_find != -1:
                             print 'enter elif'
                             oligo_row += 1
-                            name_match = sheet.cell_value(rowx=oligo_row, colx=name_col)
-                            print name_match
+                            name = sheet.cell_value(rowx=oligo_row, colx=name_col)
+                            name_match = str(name)
+			    print name_match
                             name_match_list.extend((name_match,))
                             #if there is a match (0), set handle to that cell name
                       
@@ -87,8 +89,8 @@ def import_excel_view(request):
             
             return render(request, 'match_oligo/output.html', {'var': [name_match_list] })
             #ADD WHAT TO DO WHEN DO NOT FIND A MATCH
-        else:    
-            return render(request, 'match_oligo/test2.html' , {'form2': form2})
+        #else:    
+         #   return render(request, 'match_oligo/invalid_form.html' , {'form2': form2})
                 
     #if there is no data to be submitted disply empty forms
     else:
