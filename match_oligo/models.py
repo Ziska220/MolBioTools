@@ -7,9 +7,5 @@ class user_input(models.Model):
     def __str__(self):
         return '%s' % (self.reference,) 
 
-class oligo_matches(models.Model):
-    results = models.TextField()
-    def __str__(self):
-        return '%s' % (self.results,)
     
      
