@@ -30,6 +30,7 @@ def import_excel_view(request):
             print type(oligo_input)         
 	    name_match = ''
             name_match_list = []
+
             
 
             #accesses user submitted data from uploaded file
@@ -81,13 +82,14 @@ def import_excel_view(request):
                             oligo_row += 1
                             name = sheet.cell_value(rowx=oligo_row, colx=name_col)
                             name_match = str(name)
-			    print name_match
+                            print "no quotes?"
+                            print name_match
                             name_match_list.extend((name_match,))
                             #if there is a match (0), set handle to that cell name
                       
               
             
-            return render(request, 'match_oligo/output.html', {'var': [name_match_list] })
+            return render(request, 'match_oligo/output.html', {'var': name_match_list })
             #ADD WHAT TO DO WHEN DO NOT FIND A MATCH
         #else:    
          #   return render(request, 'match_oligo/invalid_form.html' , {'form2': form2})
