@@ -2,8 +2,8 @@
 from django import forms
 
 class UploadFileForm(forms.Form):
-    #title = forms.CharField(max_length=50)
     file = forms.FileField(widget=forms.FileInput(attrs={'multiple': True}), label = 'Upload Oligo File(s):')
+    #Uses 'multiple' attribute to create a MultiValueDict
 
 from .models import user_input
 

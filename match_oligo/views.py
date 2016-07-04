@@ -3,6 +3,7 @@ import xlrd
 from Bio.Seq import Seq
 
 from .forms import UploadFileForm, RefForm
+#Acceses form and model form from forms.py
 
 def import_excel_view(request):
     if request.method == "POST":
@@ -20,84 +21,67 @@ def import_excel_view(request):
             ref_seq = ref_to_seq.upper()
             #uses biopython bio.seq package to create sequence from the submitted data: reference string
             ref_rev_comp = Seq.reverse_complement(ref_seq)
-            #uses biopython bio.seq package to create a reverse compliment of the submitted reference data in case oligo is in reverse compliment orientation
+            #uses biopython bio.seq package to create a reverse compliment of the submitted reference data
 
             #SUBMITTED DATA: OLIGO FILE
-            #oligo_input = request.FILES['file']
-            
             oligo_input =  request.FILES.getlist('file')
-            print oligo_input
-            print type(oligo_input)         
-	    name_match = ''
-            name_match_list = []
+            #Accesses 'file' from match_oligo/forms.py and uses .getlist to access all items in the MultiValueDict              
 
+            name_match_list = []
+            #creates empty  list where  matches from all files will be stored
             
 
-            #accesses user submitted data from uploaded file
-#           book = xlrd.open_workbook(file_contents=oligo_input.read())
-            #uses xlrd package to open and read submitted file as excel sheet
-#           sheet = book.sheet_by_index(0)
-            #identifies which sheet in the excel file to use
-#           nrows = sheet.nrows
-            #sets handle to number of rows in identified excel sheet
-#           sheet_name = sheet.name
-            #sets handle to sheet name in identified excel sheet
-        
             for xlsfile in oligo_input:
-                print 'enter for'
-                #OLIGO MATCH SCRIPT: add +1 to oligo_row until reach nrows (the total number of rows in the sh
+            #iterates through user uploaded files
+    
                 oligo_row = 0
                 oligo_col = 2
                 name_col = 0
-                #sets variables to identify row and column.
-                print type(oligo_input)
-                print xlsfile
+                #sets variables to identify row and column. This needs to be reset for each file that is why it is in this for loop.
+
                 book = xlrd.open_workbook(file_contents=xlsfile.read())
-                #Creates string from 'ExcelInMemoryUploadedFile' with read() function
+                #Uses xlrd package to open and read submitted file as excel sheet.
+                #Creates string from 'ExcelInMemoryUploadedFile' with read() function.
+
                 sheet = book.sheet_by_index(0)
+                #identifies which sheet in the excel file to use
                 nrows = sheet.nrows
-                print oligo_row                
-                print nrows
+                #sets handle to number of rows in identified excel sheet
                 
                 for oligo in range(sheet.nrows):
+                #iterates through items in identified file/sheet
+
                     cell = sheet.cell_value(rowx=oligo_row, colx=oligo_col)
-                    print cell
+                    #using above variables, sets handle to the cell in the current sheet/file where match search will begin
+
+                    
+#OLIGO MATCH SCRIPT: add +1 to oligo_row until reach nrows ie the total number of rows in the sheet. If find a match in ref_seq write to match_list. 
 
                     if oligo_row < nrows:
-                        print 'enter if'
-                        print cell
-                        #oligo = sheet.cell_value(rowx=oligo_row, colx=oligo_col)
-                        #using above variables, sets handle to cell in sheet where match search will begin
                         oligo_caps = cell.upper()
                         #uses biopython to ensure oligo from cell is all caps
                         oligo_find = ref_seq.find(oligo_caps)       
                         oligo_rev_find = ref_rev_comp.find(oligo_caps)
                         #uses biopython to look for oligo in reference and reverse compliment of reference
                         if oligo_find == -1 and oligo_rev_find == -1 or cell == '':
-                            print "enter if2"
                             oligo_row += 1
                             #if there is no match (-1), go to next row (add +1 to oligo_row)
                         elif oligo_find != -1 or oligo_rev_find != -1:
-                            print 'enter elif'
+                        #if there is a match (not -1, any other number is the index of the match), set handle to that cell name
                             oligo_row += 1
                             name = sheet.cell_value(rowx=oligo_row, colx=name_col)
+                            #assign handle to cell with match
                             name_match = str(name)
-                            print "no quotes?"
-                            print name_match
+                            #create string from cell name
                             name_match_list.extend((name_match,))
-                            #if there is a match (0), set handle to that cell name
-                      
+                            #append any matches to name_match_list list 
               
             
             return render(request, 'match_oligo/output.html', {'var': name_match_list })
             #ADD WHAT TO DO WHEN DO NOT FIND A MATCH
-        #else:    
-         #   return render(request, 'match_oligo/invalid_form.html' , {'form2': form2})
                 
-    #if there is no data to be submitted disply empty forms
     else:
         form1 = UploadFileForm()
         form2 = RefForm()
-    
     return render(request, 'match_oligo/user_input.html', {'form1': form1, 'form2': form2})
-
+    #if there is no data to be submitted disply empty forms
