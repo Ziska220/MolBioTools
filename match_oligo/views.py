@@ -74,7 +74,10 @@ def import_excel_view(request):
                             name_match = str(name)
                             #create string from cell name
                             name_match_list.extend((name_match,))
-                            #append any matches to name_match_list list 
+                            #append any matches to name_match_list list
+                        if not name_match_list: 
+                            no_hits = "There were no matches found."
+                            name_match_list.append(no_hits)               
               
             
             return render(request, 'match_oligo/output.html', {'var': name_match_list })
