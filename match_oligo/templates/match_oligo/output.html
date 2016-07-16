@@ -3,6 +3,8 @@
     <h1>The oligo(s) that align to your reference:</h1>
 	{% for c in var %}
 	<p> {{c}} <p>	
+        {% empty %}
+            <li> Sorry, no matches found. </li>
 	{% endfor %}
 
 	

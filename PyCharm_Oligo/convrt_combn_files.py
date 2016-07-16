@@ -35,8 +35,9 @@ book2 = xlrd.open_workbook('/Users/karlysindy/Documents/django_test/oligo_db/PyC
 
 
 #summary: add +1 to oligo_row until reach nrows (the total number of rows in the sheet)
-
-f =('/Users/karlysindy/Documents/django_test/oligo_db/PyCharm_Oligo/AJ Oligo Sheet.xls', '/Users/karlysindy/Documents/django_test/oligo_db/PyCharm_Oligo/AZ Oligos.xlsx')
+no_match = 0
+name_match_list = []
+f =('/Users/karlysindy/Documents/django_test/oligo_db/PyCharm_Oligo/AZ Oligos.xlsx', '/Users/karlysindy/Documents/django_test/oligo_db/PyCharm_Oligo/AJ Oligo Sheet.xls')
 for xlsfile in f:
     print ("enter for")
     book = xlrd.open_workbook(xlsfile)
@@ -59,10 +60,22 @@ for xlsfile in f:
             elif oligo_find != -1 or oligo_rev_find != -1:
                 print ('elif1')
                 name = sheet.cell_value(rowx=oligo_row, colx=name_col)
+                name_match_list.extend((name,))
+                no_match += 1
                 oligo_row += 1
                 print (name)
                 print (oligo_caps)
                 print ("GOT IT")
+    if not name_match_list:
+        no_hits = "There were no matches found."
+        name_match_list.append(no_hits)
+
+    print "this is name_match_list % s" % name_match_list
+
+
+
+
+
 
 
 

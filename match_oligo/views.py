@@ -26,7 +26,8 @@ def import_excel_view(request):
             #SUBMITTED DATA: OLIGO FILE
             oligo_input =  request.FILES.getlist('file')
             #Accesses 'file' from match_oligo/forms.py and uses .getlist to access all items in the MultiValueDict              
-
+            no_matches = 0
+            #Add +1 if find a match. If no matches (0) print "There were no matches found"
             name_match_list = []
             #creates empty  list where  matches from all files will be stored
             
@@ -68,6 +69,7 @@ def import_excel_view(request):
                             #if there is no match (-1), go to next row (add +1 to oligo_row)
                         elif oligo_find != -1 or oligo_rev_find != -1:
                         #if there is a match (not -1, any other number is the index of the match), set handle to that cell name
+                            no_matches += 1
                             oligo_row += 1
                             name = sheet.cell_value(rowx=oligo_row, colx=name_col)
                             #assign handle to cell with match
@@ -75,10 +77,7 @@ def import_excel_view(request):
                             #create string from cell name
                             name_match_list.extend((name_match,))
                             #append any matches to name_match_list list
-                        if not name_match_list: 
-                            no_hits = "There were no matches found."
-                            name_match_list.append(no_hits)               
-              
+   
             
             return render(request, 'match_oligo/output.html', {'var': name_match_list })
             #ADD WHAT TO DO WHEN DO NOT FIND A MATCH
