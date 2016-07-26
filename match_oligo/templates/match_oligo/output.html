@@ -1,10 +1,16 @@
 {% extends "match_oligo/main.html" %}
 {% block content %}
-    <h1>The oligo(s) that align to your reference:</h1>
-	{% for c in var %}
+    <h1>Here are the search parameters on the file(s) you submitted:</h1>
+	{% for info in search_param %}
+        <p> {{info}} <p>
+        {% endfor %}
+ 
+        {% for c in var %}
 	<p> {{c}} <p>	
+
         {% empty %}
-            <li> Sorry, no matches found. </li>
+            <p> Sorry, no matches found. <p>
+
 	{% endfor %}
 
 	

@@ -44,6 +44,10 @@ for xlsfile in f:
     sheet = book.sheet_by_index(0)
     nrows = sheet.nrows
     print (nrows)
+    print (xlsfile)
+    print sheet.cell_value(rowx=0, colx=2)
+
+
 
     oligo_row = 0
     oligo_col = 2
@@ -66,9 +70,7 @@ for xlsfile in f:
                 print (name)
                 print (oligo_caps)
                 print ("GOT IT")
-    if not name_match_list:
-        no_hits = "There were no matches found."
-        name_match_list.append(no_hits)
+
 
     print "this is name_match_list % s" % name_match_list
 

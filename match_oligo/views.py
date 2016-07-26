@@ -29,12 +29,14 @@ def import_excel_view(request):
             no_matches = 0
             #Add +1 if find a match. If no matches (0) print "There were no matches found"
             name_match_list = []
+            sheet_info_list = []
             #creates empty  list where  matches from all files will be stored
+ 
             
 
             for xlsfile in oligo_input:
             #iterates through user uploaded files
-    
+             
                 oligo_row = 0
                 oligo_col = 2
                 name_col = 0
@@ -43,12 +45,21 @@ def import_excel_view(request):
                 book = xlrd.open_workbook(file_contents=xlsfile.read())
                 #Uses xlrd package to open and read submitted file as excel sheet.
                 #Creates string from 'ExcelInMemoryUploadedFile' with read() function.
-
+                
                 sheet = book.sheet_by_index(0)
                 #identifies which sheet in the excel file to use
                 nrows = sheet.nrows
                 #sets handle to number of rows in identified excel sheet
-                
+                print nrows               
+
+                file_name = "File name: {}".format(xlsfile)
+                sheet_name = "Sheet name: {}".format(sheet.name)
+                oligo_total = "Total number of oligos searched: {}".format(sheet.nrows)
+ 
+                sheet_info_list.extend((file_name,))
+                sheet_info_list.extend((sheet_name,))
+                sheet_info_list.extend((oligo_total,))         
+
                 for oligo in range(sheet.nrows):
                 #iterates through items in identified file/sheet
 
@@ -75,11 +86,13 @@ def import_excel_view(request):
                             #assign handle to cell with match
                             name_match = str(name)
                             #create string from cell name
+                            xls_match_file_name = "The oligo(s) from %s that align to your reference:" % xlsfile
+                            name_match_list.extend((xls_match_file_name,))
                             name_match_list.extend((name_match,))
                             #append any matches to name_match_list list
    
             
-            return render(request, 'match_oligo/output.html', {'var': name_match_list })
+            return render(request, 'match_oligo/output.html', {'var': name_match_list, 'search_param': sheet_info_list,})
             #ADD WHAT TO DO WHEN DO NOT FIND A MATCH
                 
     else:
