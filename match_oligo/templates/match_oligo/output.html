@@ -1,10 +1,24 @@
 {% extends "match_oligo/main.html" %}
 {% block content %}
-    <h1>Here are the search parameters on the file(s) you submitted:</h1>
+
+<div class="col-sm-6">
+    <div class='container-fluid'>
+
+    <h4>Information about the file(s) submitted:</h4>
 	{% for info in search_param %}
+
         <li> {{info}} </li>
+
         {% endfor %}
- 
+
+    </div> 
+</div>
+
+<div class="col-sm-6">
+    <div class='container-fluid'>
+
+    <h4>The oligo(s) that align to your reference:</h4>
+
         {% for c in var %}
 	<p> {{c}} <p>	
 
@@ -12,6 +26,10 @@
             <p> Sorry, no matches found. <p>
 
 	{% endfor %}
+    </div>
+</div>
+
+
 
 	
 {% endblock %}

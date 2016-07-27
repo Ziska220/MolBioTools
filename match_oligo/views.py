@@ -86,7 +86,7 @@ def import_excel_view(request):
                             #assign handle to cell with match
                             name_match = str(name)
                             #create string from cell name
-                            xls_match_file_name = "The oligo(s) from %s that align to your reference:" % xlsfile
+                            xls_match_file_name = "%s:" % xlsfile
                             name_match_list.extend((xls_match_file_name,))
                             name_match_list.extend((name_match,))
                             #append any matches to name_match_list list
