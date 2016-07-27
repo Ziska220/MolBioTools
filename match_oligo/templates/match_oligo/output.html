@@ -2,7 +2,7 @@
 {% block content %}
     <h1>Here are the search parameters on the file(s) you submitted:</h1>
 	{% for info in search_param %}
-        <p> {{info}} <p>
+        <li> {{info}} </li>
         {% endfor %}
  
         {% for c in var %}

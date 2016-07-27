@@ -17,7 +17,14 @@ i<!DOCTYPE html>
 </head>
 
 <body class="body" style="background-color:#f6f6f6">
-	<div class="container-fluid" style="min-height:95%; ">
+        <style type ="text/css">
+        body {
+          margin: 0 auto;
+          max-width: 60em;
+          background-color:#f6f6f6
+        }
+        </style>
+        <div class="container-fluid" style="min-height:95%; ">
 		<div class="row">
 			  <div class="col-sm-2">
 				  <br>
@@ -28,6 +35,7 @@ i<!DOCTYPE html>
 				  <br>
 				  <center>
 				  <h2>MolBio Tools</h2>
+
 				  </center>
 			  </div>
 		</div><hr>
@@ -38,8 +46,8 @@ i<!DOCTYPE html>
 
 		  <br>
 		   <!-- Great, til you resize. -->
-			<!--<div class="well bs-sidebar affix" id="sidebar" style="background-color:#fff">-->
-			<div class="well bs-sidebar" id="sidebar" style="background-color:#fff">
+			<div class="well bs-sidebar affix" id="sidebar" style="background-color:#fff">
+			<!--<div class="well bs-sidebar" id="sidebar" style="background-color:#fff">-->
 			  <ul class="nav nav-pills nav-stacked">
 				<li><a href='/oligo/'>Oligo Search</a></li>
 				<li><a href='/contact/'>Contact</a></li>
@@ -50,16 +58,13 @@ i<!DOCTYPE html>
 		  
 			<div class='container-fluid'>
 			<br><br>
-			   {% block content %}
+           		   {% block content %}
 			   {% endblock %}	
 			</div>
 		  </div>
 		</div> 
 	</div>
 	<footer>
-		<div class="container-fluid" style='margin-left:15px'>
-			<p><a href="#" target="blank">Contact</a> | <a href="#" target="blank">LinkedIn</a> | <a href="#" target="blank">Twitter</a> | <a href="#" target="blank">Google+</a></p>
-		</div>
 	</footer>	
 	
 
