@@ -52,13 +52,15 @@ def import_excel_view(request):
                 #sets handle to number of rows in identified excel sheet
                 print nrows               
 
-                file_name = "File name: {}".format(xlsfile)
-                sheet_name = "Sheet name: {}".format(sheet.name)
+                file_name = "{}".format(xlsfile)
+                sheet_name = "Sheet: {}".format(sheet.name)
                 oligo_total = "Total number of oligos searched: {}".format(sheet.nrows)
+                new_line = "--"
  
                 sheet_info_list.extend((file_name,))
                 sheet_info_list.extend((sheet_name,))
                 sheet_info_list.extend((oligo_total,))         
+                sheet_info_list.extend((new_line,))
 
                 for oligo in range(sheet.nrows):
                 #iterates through items in identified file/sheet
