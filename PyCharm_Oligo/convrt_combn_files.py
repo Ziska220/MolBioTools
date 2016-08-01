@@ -4,6 +4,23 @@ import xlrd
 from Bio.Seq import Seq
 import os
 import fileinput
+import urllib
+import re
+
+chr_input_clean = ""
+
+chr_input = urllib.urlopen("http://genome.ucsc.edu/cgi-bin/das/hg19/dna?segment=chr1:100000,200000")
+
+chr_input_read = chr_input.read()
+re_line = ''
+remove = re.sub('<.+>', '',chr_input_read)
+strip = remove.replace('\n','')
+print strip
+chr_input_caps = remove.upper()
+chr_input_seq = Seq(chr_input_caps)
+#print chr_input_seq
+
+#print chr_input_caps
 
 #opens and read lines of reference file
 ref_file = open('/Users/karlysindy/Documents/django_test/oligo_db/PyCharm_Oligo/reference_file.txt')
@@ -39,13 +56,13 @@ no_match = 0
 name_match_list = []
 f =('/Users/karlysindy/Documents/django_test/oligo_db/PyCharm_Oligo/AZ Oligos.xlsx', '/Users/karlysindy/Documents/django_test/oligo_db/PyCharm_Oligo/AJ Oligo Sheet.xls')
 for xlsfile in f:
-    print ("enter for")
+    #print ("enter for")
     book = xlrd.open_workbook(xlsfile)
     sheet = book.sheet_by_index(0)
     nrows = sheet.nrows
-    print (nrows)
-    print (xlsfile)
-    print sheet.cell_value(rowx=0, colx=2)
+    #print (nrows)
+    #print (xlsfile)
+    #print sheet.cell_value(rowx=0, colx=2)
 
 
 
@@ -59,17 +76,18 @@ for xlsfile in f:
             oligo_caps = cell.upper()
             oligo_find = ref_seq.find(oligo_caps)
             oligo_rev_find = ref_rev_comp.find(oligo_caps)
+
             if oligo_find == -1 and oligo_rev_find == -1 or cell == '':
                 oligo_row += 1
             elif oligo_find != -1 or oligo_rev_find != -1:
-                print ('elif1')
+                #print ('elif1')
                 name = sheet.cell_value(rowx=oligo_row, colx=name_col)
                 name_match_list.extend((name,))
                 no_match += 1
                 oligo_row += 1
-                print (name)
-                print (oligo_caps)
-                print ("GOT IT")
+                #print (name)
+                #print (oligo_caps)
+                #print ("GOT IT")
 
 
     print "this is name_match_list % s" % name_match_list

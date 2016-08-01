@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d9349287-2cb4-43a3-8375-651106544fe7" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PyCharm_Oligo/AZ Oligos.xlsx" afterPath="$PROJECT_DIR$/PyCharm_Oligo/AZ Oligos.xlsx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PyCharm_Oligo/convrt_combn_files.py" afterPath="$PROJECT_DIR$/PyCharm_Oligo/convrt_combn_files.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match_oligo/templates/match_oligo/output.html" afterPath="$PROJECT_DIR$/match_oligo/templates/match_oligo/output.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match_oligo/views.py" afterPath="$PROJECT_DIR$/match_oligo/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="oligo_db.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -47,8 +44,8 @@
       <file leaf-file-name="convrt_combn_files.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PyCharm_Oligo/convrt_combn_files.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.112526536" vertical-offset="728" max-vertical-offset="2265">
-              <caret line="45" column="4" selection-start-line="45" selection-start-column="4" selection-end-line="45" selection-end-column="17" />
+            <state vertical-scroll-proportion="2.8025477" vertical-offset="0" max-vertical-offset="2535">
+              <caret line="88" column="35" selection-start-line="88" selection-start-column="35" selection-end-line="88" selection-end-column="35" />
               <folding>
                 <element signature="e#74#85#0" expanded="true" />
               </folding>
@@ -95,7 +92,8 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
+    <option name="x" value="-11" />
+    <option name="y" value="24" />
     <option name="width" value="1440" />
     <option name="height" value="873" />
   </component>
@@ -166,6 +164,11 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="recentsLimit" value="5" />
+  </component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings />
+    </option>
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -386,8 +389,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="873" extended-state="0" />
-    <editor active="false" />
+    <frame x="-11" y="24" width="1440" height="873" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -397,7 +400,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25299507" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3290653" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290653" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -455,12 +458,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/PyCharm_Oligo/convrt_combn_files.py</url>
-          <line>14</line>
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="1" />
     </breakpoint-manager>
     <watches-manager />
@@ -560,8 +557,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/PyCharm_Oligo/convrt_combn_files.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.112526536" vertical-offset="728" max-vertical-offset="2265">
-          <caret line="45" column="4" selection-start-line="45" selection-start-column="4" selection-end-line="45" selection-end-column="17" />
+        <state vertical-scroll-proportion="2.8025477" vertical-offset="0" max-vertical-offset="2535">
+          <caret line="88" column="35" selection-start-line="88" selection-start-column="35" selection-end-line="88" selection-end-column="35" />
           <folding>
             <element signature="e#74#85#0" expanded="true" />
           </folding>
