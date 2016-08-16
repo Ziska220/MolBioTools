@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django import forms
 import xlrd
 from Bio.Seq import Seq
 import urllib.request
@@ -11,61 +12,82 @@ from .forms import UploadFileForm, RefForm, ChrLocForm
 
 def import_excel_view(request):
     new_line_oligo = 0
+
     if request.method == "POST":
     #if there is data to be submitted continue with script
         form1 = UploadFileForm(request.POST, request.FILES)
         form2 = RefForm(request.POST)
         form3 = ChrLocForm(request.POST)
         #handle assigned to user submitted data for each form.
-#        if form1.is_valid() and (form2.is_valid() or form3.is_valid()):
+        ValidForm1 = False
+
+        # if form2.is_valid() and form3.is_valid():
+        #     raise forms.ValidationError
+        #
+        if form1.is_valid() and (form2.is_valid() or form3.is_valid()):
+            check = (form2.is_valid()), (form3.is_valid())
+            if form1.is_valid() and all(check):
+                raise forms.ValidationError('Use only one reference')
         #ensures data submitted is valid. Blank cells in excel sheet are not valid and will stop iteration of file.
-        if form2.is_valid():
-            #SUBMITTED DATA: REFERENCE TEXT
-            reference = form2.cleaned_data['reference']
-            #accesses validated form input
-            #reference = request.POST['reference']
-            #accesses unvalidated form input
-            #accesses user submitted reference data as dictionary by keyname
-            ref_to_seq = Seq(reference)
-            ref_seq = ref_to_seq.upper()
-            #uses biopython bio.seq package to create sequence from the submitted data: reference string
-            ref_rev_comp = Seq.reverse_complement(ref_seq)
-            #uses biopython bio.seq package to create a reverse compliment of the submitted reference data
-            chr_input_seq = ''
-            chr_input_rev_seq = ''
 
-        elif form3.is_valid():
-            #SUBMITTED DATA: CHROMSOME REFERENCE LINK
-            chrom = request.POST['chr']
-            loc_start = request.POST['loc_start']
-            loc_stop = request.POST['loc_stop']
-            url = "http://genome.ucsc.edu/cgi-bin/das/hg19/dna?segment=chr{}:{},{}".format(chrom, loc_start, loc_stop)
-            print (url)
-
-            chr_url = urllib.request.urlopen(url)
-            chr_url_read = chr_url.read()
-            chr_url_decode = chr_url_read.decode('utf-8')
-            chr_input = re.sub('<.+>', '', chr_url_decode)
-            chr_input_strip = chr_input.replace('\n','')
-            chr_input_caps = chr_input_strip.upper()
-            chr_input_seq = Seq(chr_input_caps)
-            chr_input_rev_seq = Seq.reverse_complement(chr_input_seq)
-
-            ref_seq = ''
-            ref_rev_comp = ''
-
-        if form1.is_valid():
-            #SUBMITTED DATA: OLIGO FILE
-            oligo_input =  request.FILES.getlist('file')
-            #Accesses 'file' from match_oligo/forms.py and uses .getlist to access all items in the MultiValueDict
-            no_matches = 0
-            #Add +1 if find a match. If no matches (0) print "There were no matches found"
-            name_match_list = []
-            sheet_info_list = []
-            #creates empty  list where  matches from all files will be stored
-            new_line = "--"
+            #check = (form2.is_valid()), (form3.is_valid())
+            #if any(check) and not all(check):
 
 
+
+
+            if form1.is_valid():
+                #SUBMITTED DATA: OLIGO FILE
+                oligo_input =  request.FILES.getlist('file')
+                #Accesses 'file' from match_oligo/forms.py and uses .getlist to access all items in the MultiValueDict
+                no_matches = 0
+                #Add +1 if find a match. If no matches (0) print "There were no matches found"
+                name_match_list = []
+                sheet_info_list = []
+                #creates empty  list where  matches from all files will be stored
+                new_line = "--"
+                ValidForm1 = True
+                reference = ''
+
+            if form2.is_valid():
+                print("enter form2")
+                #SUBMITTED DATA: REFERENCE TEXT
+                reference = form2.cleaned_data['reference']
+                #accesses validated form input
+                #reference = request.POST['reference']
+                #accesses unvalidated form input
+                #accesses user submitted reference data as dictionary by keyname
+                ref_to_seq = Seq(reference)
+                ref_seq = ref_to_seq.upper()
+                #uses biopython bio.seq package to create sequence from the submitted data: reference string
+                ref_rev_comp = Seq.reverse_complement(ref_seq)
+                #uses biopython bio.seq package to create a reverse compliment of the submitted reference data
+                chr_input_seq = ''
+                chr_input_rev_seq = ''
+
+            elif form3.is_valid():
+                    print("enter form3")
+                    #SUBMITTED DATA: CHROMSOME REFERENCE LINK
+                    chrom = request.POST['chr']
+                    loc_start = request.POST['loc_start']
+                    loc_stop = request.POST['loc_stop']
+                    url = "http://genome.ucsc.edu/cgi-bin/das/hg19/dna?segment=chr{}:{},{}".format(chrom, loc_start, loc_stop)
+                    print (url)
+
+                    chr_url = urllib.request.urlopen(url)
+                    chr_url_read = chr_url.read()
+                    chr_url_decode = chr_url_read.decode('utf-8')
+                    chr_input = re.sub('<.+>', '', chr_url_decode)
+                    chr_input_strip = chr_input.replace('\n','')
+                    chr_input_caps = chr_input_strip.upper()
+                    chr_input_seq = Seq(chr_input_caps)
+                    chr_input_rev_seq = Seq.reverse_complement(chr_input_seq)
+
+                    ref_seq = ''
+                    ref_rev_comp = ''
+
+        if ValidForm1:
+            print("entersawform")
             for xlsfile in oligo_input:
             #iterates through user uploaded files
                 if new_line_oligo > 0:
@@ -102,7 +124,7 @@ def import_excel_view(request):
                     #using above variables, sets handle to the cell in the current sheet/file where match search will begin
 
 
-#OLIGO MATCH SCRIPT: add +1 to oligo_row until reach nrows ie the total number of rows in the sheet. If find a match in ref_seq write to match_list.
+    #OLIGO MATCH SCRIPT: add +1 to oligo_row until reach nrows ie the total number of rows in the sheet. If find a match in ref_seq write to match_list.
 
                     if oligo_row < nrows:
                         oligo_caps = cell.upper()
@@ -141,9 +163,12 @@ def import_excel_view(request):
             return render(request, 'match_oligo/output.html', {'var': name_match_list, 'search_param': sheet_info_list,})
             #ADD WHAT TO DO WHEN DO NOT FIND A MATCH
 
+       # raise forms.ValidationError('only one reference')
+
     else:
         form1 = UploadFileForm()
         form2 = RefForm()
         form3 = ChrLocForm()
+
     return render(request, 'match_oligo/user_input.html', {'form1': form1, 'form2': form2, 'form3':form3})
     #if there is no data to be submitted disply empty forms
