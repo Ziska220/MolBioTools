@@ -2,13 +2,16 @@
 {% block content %}
 {% load crispy_forms_tags %}
     <h4>Oligo Search <small> This program uses xlrd and biopython to find short oligonucleotide sequences within a larger seaquence. The user can upload multple files. At this point, only accepting xls and xlsx files.</small></h4>
+    <br>
     <form class="uniForm" enctype="multipart/form-data" method="POST">
-        {% csrf_token %}	
-        {{ form1|crispy }}
+        {% csrf_token %}
+        {{ form1|crispy}}
     	{{ form2|crispy }}
+      <h4>OR... <small> Input the chromsome number, start and stop location of the area of the hg19 genome. </small></h4>
         <div class = "form-inline">
         {{ form3|crispy }}
         </div>
+        <br>
         <button type="submit" class="save btn btn-default">Submit</button>
 
     </form>
