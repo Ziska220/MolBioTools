@@ -54,7 +54,7 @@ def import_excel_view(request):
                 ref_rev_comp = Seq.reverse_complement(ref_seq)
                 #uses biopython to create a reverse compliment of the submitted reference data
                 ref_length = str(len(ref_seq))
-                reference_info.extend(("Contains the following number of nucleotides: {}".format(ref_length),))
+                reference_info.extend(("The following number of nucleotides were searched: {}".format(ref_length),))
                 chr_input_seq = ''
                 chr_input_rev_seq = ''
                 #create empty list of UCSC das url reference variables to prevent error in oligo search loop

@@ -1,8 +1,7 @@
 {% extends "match_oligo/main.html" %}
 {% block content %}
 {% load crispy_forms_tags %}
-    <h4>Oligo Search <small> This program uses xlrd and biopython to find short oligonucleotide sequences within a larger seaquence. The user can upload multple files. At this point, only accepting xls and xlsx files.</small></h4>
-    <br>
+    <h4>Oligo Search <small> This program searches for exact matches of oligo sequences within a larger "reference" sequence. Spaces and caps are ignored, reverse compliment is also searched. The user can upload multple oligo files (xls/xlsx only).</small></h4>
     <form class="uniForm" enctype="multipart/form-data" method="POST">
         {% csrf_token %}
         {{ form1|crispy}}

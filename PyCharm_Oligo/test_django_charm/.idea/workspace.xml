@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="79990c1c-de0d-4362-88cd-57992f587355" name="Default" comment="">
+    <list default="true" id="79990c1c-de0d-4362-88cd-57992f587355" name="Default" comment="Changed wording and formating of match_oligo output">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/match_oligo/views.py" afterPath="$PROJECT_DIR$/match_oligo/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/match_oligo/main.html" afterPath="$PROJECT_DIR$/templates/match_oligo/main.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/match_oligo/output.html" afterPath="$PROJECT_DIR$/templates/match_oligo/output.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/match_oligo/user_input.html" afterPath="$PROJECT_DIR$/templates/match_oligo/user_input.html" />
     </list>
     <ignored path="test_django_charm.iws" />
@@ -31,38 +29,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/match_oligo/forms.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/match_oligo/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3816794">
-              <caret line="80" column="50" selection-start-line="80" selection-start-column="50" selection-end-line="80" selection-end-column="50" />
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="user_input.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/match_oligo/user_input.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.375">
-              <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="main.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/match_oligo/main.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -73,14 +39,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="output.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/match_oligo/output.html">
+      <file leaf-file-name="user_input.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/match_oligo/user_input.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.75">
-              <caret line="36" column="43" selection-start-line="36" selection-start-column="43" selection-end-line="36" selection-end-column="43" />
-              <folding>
-                <element signature="e#322#386#0#HTML" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.11363637">
+              <caret line="3" column="181" selection-start-line="3" selection-start-column="181" selection-end-line="3" selection-end-column="181" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -115,9 +79,9 @@
         <option value="$PROJECT_DIR$/match_oligo/forms.py" />
         <option value="$PROJECT_DIR$/test_django_charm/settings.py" />
         <option value="$PROJECT_DIR$/templates/match_oligo/main.html" />
-        <option value="$PROJECT_DIR$/templates/match_oligo/user_input.html" />
         <option value="$PROJECT_DIR$/templates/match_oligo/output.html" />
         <option value="$PROJECT_DIR$/match_oligo/views.py" />
+        <option value="$PROJECT_DIR$/templates/match_oligo/user_input.html" />
       </list>
     </option>
   </component>
@@ -127,8 +91,8 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="6" />
-    <option name="y" value="103" />
+    <option name="x" value="50" />
+    <option name="y" value="104" />
     <option name="width" value="1302" />
     <option name="height" value="797" />
   </component>
@@ -205,20 +169,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="test_django_charm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_django_charm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test_django_charm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="templates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -251,7 +201,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="match_oligo" />
+              <option name="myItemId" value="contact" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -546,11 +496,17 @@
       <option name="project" value="LOCAL" />
       <updated>1471374621112</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Changed wording and formating of match_oligo output">
+      <created>1471465219213</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1471465219213</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="6" y="103" width="1302" height="797" extended-state="0" />
+    <frame x="50" y="104" width="1302" height="797" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -590,7 +546,8 @@
     <MESSAGE value="removed and recreated database&#10;" />
     <MESSAGE value="fixed validation for forms&#10;" />
     <MESSAGE value="cleaned up and commented match_oligo/views.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="cleaned up and commented match_oligo/views.py" />
+    <MESSAGE value="Changed wording and formating of match_oligo output" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed wording and formating of match_oligo output" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -936,19 +893,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/match_oligo/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.95384616">
+          <caret line="158" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/match_oligo/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.3323486">
           <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/match_oligo/user_input.html">
+    <entry file="file://$PROJECT_DIR$/templates/match_oligo/output.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.375">
-          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-          <folding />
+        <state vertical-scroll-proportion="0.6784074">
+          <caret line="36" column="43" selection-start-line="36" selection-start-column="43" selection-end-line="36" selection-end-column="43" />
+          <folding>
+            <element signature="e#322#386#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -960,23 +929,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/match_oligo/output.html">
+    <entry file="file://$PROJECT_DIR$/templates/match_oligo/user_input.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.75">
-          <caret line="36" column="43" selection-start-line="36" selection-start-column="43" selection-end-line="36" selection-end-column="43" />
-          <folding>
-            <element signature="e#322#386#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/match_oligo/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3816794">
-          <caret line="80" column="50" selection-start-line="80" selection-start-column="50" selection-end-line="80" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.11363637">
+          <caret line="3" column="181" selection-start-line="3" selection-start-column="181" selection-end-line="3" selection-end-column="181" />
+          <folding />
         </state>
       </provider>
     </entry>
